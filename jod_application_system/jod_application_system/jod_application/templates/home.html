@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+<style>
+    .fade-in-table {
+        animation: fadeInDown 1.5s ease-out;
+    }
+
+    @keyframes fadeInDown {
+        0% {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<h1 class="my-4 text-center text-danger fw-bold">Booking Status</h1>
+
+<div class="table-responsive fade-in-table">
+    <table class="table table-striped table-bordered align-middle text-center">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">ชื่อ</th>
+                <th scope="col">อีเมล</th>
+                <th scope="col">เบอร์โทรศัพท์</th>
+                <th scope="col">เซตที่จอง</th>
+                <th scope="col">วันที่จอง</th>
+                <th scope="col">เวลาที่จอง</th>
+                <th scope="col">แก้ไขการจอง</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for application in applications %}
+            <tr>
+                <td>{{ application.first_name }}</td>
+                <td>{{ application.email }}</td>
+                <td>{{ application.phone_number }}</td>
+                <td>{{ application.set_food }}</td>
+                <td>{{ application.booking_date }}</td>
+                <td>{{ application.booking_time }}</td>
+                <td>
+                    <a href="{% url 'edit_application' application.pk %}" class="btn btn-warning btn-sm">แก้ไข</a>
+                    <a href="{% url 'delete_application' application.pk %}" class="btn btn-danger btn-sm" 
+                    onclick="return confirm('คุณต้องการลบการจองนี้ใช่หรือไม่?')">ลบ</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

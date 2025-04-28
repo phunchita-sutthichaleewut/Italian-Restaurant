@@ -1,0 +1,261 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block title %}
+<title>About - Italian Restaurant</title>
+{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Italian Restaurant</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #5f4b3a;
+        }
+
+        header {
+            background-image: url('https://cdn.pixabay.com/photo/2015/09/14/11/43/restaurant-939435_1280.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+            font-size: 3rem;
+            font-style: italic;
+            font-weight: bold;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6);
+            animation: zoomSlow 30s ease-in-out infinite alternate;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        header h1 {
+            position: relative;
+            z-index: 2;
+            margin: 0;
+        }
+
+        @keyframes zoomSlow {
+            from { background-size: 100%; }
+            to { background-size: 110%; }
+        }
+
+        section {
+            padding: 40px 20px;
+            background-color: #fff;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 30px;
+            color: #9e2a2f;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        section p {
+            text-align: center;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #5f4b3a;
+            margin-bottom: 20px;
+        }
+
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .image-gallery img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .image-gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                font-size: 2rem;
+                min-height: 40vh;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Welcome to Our Italian Restaurant</h1>
+</header>
+
+<section style="padding: 40px 20px; background-color: #fff; font-family: 'Prompt', sans-serif;">
+    <h2 class="text-center mb-4" style="color: #9e2a2f; font-weight: bold;">เซตอาหารแนะนำ</h2>
+    <p class="text-center mb-5" style="font-size: 18px; color: #5f4b3a;">
+        เราคัดสรรเซตอาหารที่ผสมผสานวัตถุดิบคุณภาพ และรสชาติอิตาเลียนดั้งเดิม
+    </p>
+    
+        <div class="container">
+            <div class="row g-4">
+    
+                <!-- Set 1 -->
+                <div class="col-md-4">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://cdn.pixabay.com/photo/2024/04/28/09/42/ai-generated-8725190_1280.png" class="card-img-top" alt="Set 1">
+                        <div class="card-body">
+                            <h5 class="card-title text-danger fw-bold">Set A : Classic Bolognese Delight – ราคา 1,000 บาท</h5>
+                            <p class="card-text text-muted">
+                                🍝 Main:
+                                
+                                สปาเกตตีโบโลเนส (Spaghetti Bolognese)
+                                เส้นพาสต้าสไตล์อิตาเลียนแท้ กับซอสเนื้อเข้มข้นเคี่ยวกับมะเขือเทศสด
+                            </p>
+                            <p class="card-text text-muted">    
+                                🥣 Appetizer:
+                                
+                                มินิโปรชุตโต้ร็อกเก็ตสลัด (Prosciutto Rocket Salad)
+                                ผักร็อกเก็ตออร์แกนิกกับแฮมอิตาเลียนราดบัลซามิก
+                            </p>   
+                            <p class="card-text text-muted">
+                                🍮 Dessert:
+                                
+                                ทีรามิสุ (Tiramisu)
+                                เค้กกาแฟมาสคาร์โปน โรยด้วยผงโกโก้
+                            </p>   
+                            <p class="card-text text-muted">
+                                🥤 Drink:
+                                
+                                น้ำแร่ธรรมชาติ (Still Water)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Set 2 -->
+                <div class="col-md-4">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://images.pexels.com/photos/6147824/pexels-photo-6147824.jpeg?auto=compress&cs=tinysrgb&w=600" class="card-img-top" alt="Set 2">
+                        <div class="card-body">
+                            <h5 class="card-title text-danger fw-bold">Set B : Tuscan Truffle Indulgence – ราคา 1,500 บาท</h5>
+                            <p class="card-text text-muted">
+                                🍕 Main:
+
+                                พิซซ่าเห็ดทรัฟเฟิล (Truffle Mushroom Pizza)
+                                แป้งบางกรอบ อบเตาถ่าน พร้อมชีสและเห็ดทรัฟเฟิล
+                            </p>   
+                            <p class="card-text text-muted">
+                                🥗 Appetizer:
+                                
+                                บรูสเกตต้ามะเขือเทศสด (Tomato Bruschetta)
+                                ขนมปังปิ้งกรอบ ราดซอสมะเขือเทศโหระพาและน้ำมันมะกอก
+                            </p>
+                            <p class="card-text text-muted">    
+                                🍨 Dessert:
+                                
+                                พานาคอตต้าซอสเบอร์รี (Panna Cotta with Berry Compote)
+                            </p>
+                            <p class="card-text text-muted">   
+                                🍷 Drink:
+                                
+                                ไวน์แดงอิตาเลียน 1 แก้ว (Red House Wine)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Set 3 -->
+                <div class="col-md-4">
+                    <div class="card shadow-sm h-100">
+                        <img src="https://cdn.pixabay.com/photo/2022/08/22/18/37/scallops-7404270_1280.jpg" class="card-img-top" alt="Set 3">
+                        <div class="card-body">
+                            <h5 class="card-title text-danger fw-bold">Set C : Royal Seafood Italiano – ราคา 2,000 บาท</h5>
+                            <p class="card-text text-muted">
+                                🦐 Main:
+                                ราวิโอลีซีฟู้ดซอสซาฟฟรอน (Seafood Ravioli with Saffron Cream Sauce)
+                            </p>
+                            <p class="card-text text-muted">  
+                                🍜 Appetizer:
+                                
+                                ซุปมะเขือเทศเบซิล (Tomato Basil Soup)
+                            </p>   
+                            <p class="card-text text-muted">
+                                🍧 Dessert:
+                                
+                                เจลาโต้วานิลลาอัลมอนด์ (Vanilla Almond Gelato)
+                            </p> 
+                            <p class="card-text text-muted">   
+                                🥂 Drink:
+                                
+                                สปาร์คลิ่งไวน์ Prosecco 1 แก้ว
+                            </p>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </section>
+
+    <script>
+        ScrollReveal().reveal('.card', {
+            delay: 200,
+            duration: 1000,
+            origin: 'bottom',
+            distance: '50px',
+            easing: 'ease-in-out',
+            reset: false,
+            interval: 200
+        });
+    </script>
+
+</body>
+</html>
+
+{% endblock %}

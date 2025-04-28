@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+<h1 class="text-center mb-5" style="font-family: 'Playfair Display', serif; color: #9e2a2f;">
+  Add Reservation
+</h1>
+
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <form id="booking-form" method="post" class="p-5 rounded-4 shadow-lg" style="background-color: rgba(255, 255, 255, 0.95); font-family: 'Prompt', sans-serif;">
+        {% csrf_token %}
+        
+        <div class="mb-3">
+          <label for="id_first_name" class="form-label fw-semibold text-dark">ชื่อ:</label>
+          {{ form.first_name|add_class:"form-control bg-light border-0 rounded-3 shadow-sm" }}
+        </div>
+
+        <div class="mb-3">
+          <label for="id_last_name" class="form-label fw-semibold text-dark">นามสกุล:</label>
+          {{ form.last_name|add_class:"form-control bg-light border-0 rounded-3 shadow-sm" }}
+        </div>
+
+        <div class="mb-3">
+          <label for="id_email" class="form-label fw-semibold text-dark">อีเมล:</label>
+          {{ form.email|add_class:"form-control bg-light border-0 rounded-3 shadow-sm" }}
+        </div>
+
+        <div class="mb-3">
+          <label for="id_phone_number" class="form-label fw-semibold text-dark">เบอร์โทรศัพท์:</label>
+          {{ form.phone_number|add_class:"form-control bg-light border-0 rounded-3 shadow-sm" }}
+        </div>
+
+        <div class="mb-3">
+          <label for="id_set_food" class="form-label fw-semibold text-dark">เลือกเซตที่ต้องการ:</label>
+          {{ form.set_food|add_class:"form-select bg-light border-0 rounded-3 shadow-sm" }}
+        </div>
+
+        <div class="mb-3">
+          <label for="id_room_size" class="form-label fw-semibold text-dark">ขนาดห้อง:</label>
+          {{ form.room_size|add_class:"form-select bg-light border-0 rounded-3 shadow-sm" }}
+        </div>
+
+        <div class="mb-3">
+          <label for="id_room_type" class="form-label fw-semibold text-dark">ประเภทห้อง:</label>
+          {{ form.room_type|add_class:"form-select bg-light border-0 rounded-3 shadow-sm" }}
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="id_booking_date" class="form-label fw-semibold text-dark">วันที่จอง:</label>
+            {{ form.booking_date|add_class:"form-control bg-light border-0 rounded-3 shadow-sm" }}
+          </div>
+          <div class="col-md-6">
+            <label for="id_booking_time" class="form-label fw-semibold text-dark">เวลาที่จอง:</label>
+            {{ form.booking_time|add_class:"form-select bg-light border-0 rounded-3 shadow-sm" }}
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="id_application_status" class="form-label fw-semibold text-dark">ต้องการบริกร:</label>
+          {{ form.application_status|add_class:"form-select bg-light border-0 rounded-3 shadow-sm" }}
+        </div>
+
+        <div class="mt-4 d-flex justify-content-between">
+          <button type="submit" class="btn btn-danger px-4 py-2 rounded-3">
+            <i class="bi bi-save-fill me-2"></i>บันทึกแก้ไขการจอง
+          </button>
+          <a href="{% url 'home' %}" class="btn btn-outline-secondary px-4 py-2 rounded-3">
+            <i class="bi bi-arrow-left-circle me-2"></i>กลับหน้าหลัก
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+<!-- ScrollReveal CDN (ถ้ายังไม่ใส่ใน base.html) -->
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<!-- ScrollReveal fade-down effect -->
+<script>
+  ScrollReveal().reveal('#booking-form', {
+      delay: 100,
+      duration: 1000,
+      origin: 'top',
+      distance: '50px',
+      opacity: 0,
+      easing: 'ease-in-out',
+      reset: false
+  });
+</script>
+{% endblock %}

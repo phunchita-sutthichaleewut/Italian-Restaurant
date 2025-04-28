@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="container py-4" style="font-family: 'Prompt', sans-serif;">
+    <h1 class="text-center mb-4" style="color: #9e2a2f;" id="search-title">Search Reservation</h1>
+
+    <form method="GET" action="{% url 'search_application' %}" class="input-group mb-4 shadow-sm" id="search-form">
+        <input type="text" name="q" value="{{ query }}" class="form-control rounded-start-pill" placeholder="🔍 ค้นหาชื่อ เบอร์ หรือวันที่จอง (YYYY-MM-DD)">
+        <button type="submit" class="btn btn-danger rounded-end-pill px-4">ค้นหา</button>
+    </form>
+
+    {% if applications %}
+    <div class="alert alert-success shadow-sm rounded-3" id="search-count">
+        พบทั้งหมด {{ applications|length }} รายการ
+    </div>
+
+    <div class="table-responsive shadow-lg rounded-4" id="result-table">
+        <table class="table table-bordered table-hover align-middle text-center mb-0">
+            <thead class="table-danger">
+                <tr>
+                    <th>ชื่อ</th>
+                    <th>อีเมล</th>
+                    <th>เบอร์โทรศัพท์</th>
+                    <th>เมนู</th>
+                    <th>วันที่จอง</th>
+                    <th>เวลาที่จอง</th>
+                    <th>การจัดการ</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for application in applications %}
+                <tr>
+                    <td>{{ application.first_name }} {{ application.last_name }}</td>
+                    <td>{{ application.email }}</td>
+                    <td>{{ application.phone_number }}</td>
+                    <td>{{ application.set_food }}</td>
+                    <td>{{ application.booking_date|date:"d/m/Y" }}</td>
+                    <td>{{ application.booking_time }}</td>
+                    <td>
+                        <a href="{% url 'edit_application' application.pk %}" class="btn btn-warning btn-sm rounded-3">
+                            ✏️ แก้ไข
+                        </a>
+                        <a href="{% url 'delete_application' application.pk %}" class="btn btn-outline-danger btn-sm rounded-3"
+                           onclick="return confirm('คุณต้องการลบรายการนี้ใช่หรือไม่?')">
+                            🗑️ ลบ
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {% else %}
+        <div class="alert alert-warning text-center mt-4 shadow-sm rounded-3" id="no-result">
+            ไม่พบผลการค้นหาที่ตรงกับคำว่า "<strong>{{ query }}</strong>"
+        </div>
+    {% endif %}
+</div>
+
+<!-- ScrollReveal CDN (หากยังไม่อยู่ใน base.html) -->
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<!-- ScrollReveal Animation -->
+<script>
+    ScrollReveal().reveal('#search-title', {
+        delay: 100,
+        duration: 800,
+        origin: 'top',
+        distance: '30px',
+        opacity: 0,
+        easing: 'ease-in-out'
+    });
+
+    ScrollReveal().reveal('#search-form', {
+        delay: 300,
+        duration: 1000,
+        origin: 'top',
+        distance: '40px',
+        opacity: 0,
+        easing: 'ease-in-out'
+    });
+
+    ScrollReveal().reveal('#search-count', {
+        delay: 500,
+        duration: 1000,
+        origin: 'top',
+        distance: '40px',
+        opacity: 0
+    });
+
+    ScrollReveal().reveal('#result-table', {
+        delay: 600,
+        duration: 1000,
+        origin: 'bottom',
+        distance: '60px',
+        opacity: 0
+    });
+
+    ScrollReveal().reveal('#no-result', {
+        delay: 500,
+        duration: 1000,
+        origin: 'bottom',
+        distance: '40px',
+        opacity: 0
+    });
+</script>
+{% endblock %}
